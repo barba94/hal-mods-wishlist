@@ -1,0 +1,88 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,900");
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: #f2f2f2;
+  line-height: 1.2;
+}
+div {
+  position: relative;
+}
+
+ul {
+  width: 60vw;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%);
+}
+
+@media (max-width: 840px) {
+  ul {
+    width: 80vw;
+  }
+}
+
+ul li {
+  border-bottom: 2px solid #e6e6e6;
+  position: relative;
+  overflow: hidden;
+  transition: 0.2s ease-in-out;
+}
+ul li a {
+  display: block;
+  padding: 30px;
+  text-decoration: none;
+  color: #222;
+  transition: 0.2s ease-in-out;
+}
+ul li a h3 {
+  margin: 0 0 15px;
+  font-size: 30px;
+  font-weight: 900;
+}
+ul li a p {
+  margin: 0;
+  font-size: 20px;
+  max-width: calc(100% - 110px);
+}
+ul li a i {
+  position: absolute;
+  top: 50%;
+  right: 50px;
+  transform: translatey(-50%);
+  font-size: 80px !important;
+  opacity: 0.25;
+}
+ul li.Acciaio:hover {
+  background-color: #ffc107;
+}
+ul li.Arme:hover {
+  background-color: #333;
+}
+ul li.Barba:hover {
+  background-color: #e53935;
+}
+ul li.Brina:hover {
+  background-color: #4caf50;
+}
+ul li.Cane:hover {
+  background-color: #333;
+}
+ul li.Exor:hover {
+  background-color: #333;
+}
+ul li.Wiz:hover {
+  background-color: #9c27b0;
+}
+ul li:hover {
+  box-shadow: 0 10px 15px 0 #e6e6e6;
+}
+ul li:hover > a {
+  color: #fff;
+}
+ul li:first-child {
+  border-top: 2px solid #e6e6e6;
+}
