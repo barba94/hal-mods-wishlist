@@ -45,7 +45,8 @@
 			url: url,
 			type: 'PUT',
 			data: dataJson,
-			dataType: 'json'
+			dataType: 'json',
+			contentType: 'text/plain'
 		})
 		.done(function(data){
 			localStorage['submitted-'+nome] = true;
