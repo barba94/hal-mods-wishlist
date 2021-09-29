@@ -28,7 +28,7 @@
 					$("#div-counter-"+item.name).text(item.count.toString());
 				
 				let localSub = findLocalItems("submitted-"+item.name);
-				if(localSub && localSub[0] && localSub[0].val){
+				if(localSub.length>0 && localSub[0].val){
 					$("#toggle-heart-"+item.name).prop("checked", true).change();
 				}
 			}
@@ -60,7 +60,7 @@
 		$("[id^=toggle-heart]").change(function(){
 			let nome=this.id.split('toggle-heart-')[1];
 			let localSub = findLocalItems("submitted-"+nome);
-			if($(this).prop('checked') && localSub && localSub[0] && !localSub[0].val){
+			if($(this).prop('checked') && localSub.length>0 ){
 				setCounter(this);
 			}
 		});
