@@ -61,7 +61,13 @@ ul li div {
   top: 50%;
   right: 50px;
   transform: translatey(-50%);
-  font: 1em verdana, sans-serif;
+}
+ul li div div {
+  position: relative;
+  top: 50%;
+  right: 0;
+  bottom: -32px;
+  transform: translatey(-50%);
 }
 
 ul li.Acciaio:hover {
@@ -106,7 +112,12 @@ ul li:first-child {
   display: flex;
   justify-content: center;
   margin: 0;
-  font: 1em verdana, sans-serif;
+}
+[id^='div-counter'] {
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  font-size: 1em;
 }
 
 [id^='toggle-heart'] {

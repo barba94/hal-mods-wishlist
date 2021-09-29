@@ -8,51 +8,59 @@
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/brands.min.css'>
   <link rel="stylesheet" href="./style.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="./utils.js"></script>
   <script type="text/javascript">
 	const url = "https://x3vcm6bsph.execute-api.eu-west-1.amazonaws.com/items";
 	function getCounter(obj){
 		if(obj!=null){
-			url.concat("/").concat(obj.id);
+			let nome=obj.id.split('toggle-heart-')[1];
+			url.concat("/").concat(nome);
 		}
 		$.ajax({
 			url: url,
 			type: 'GET',
 			dataType: 'json'
 		}).done(function(data) {
-			console.log(data);
+			for(const item of data.items){
+				if(item.count<10)
+					$("#div-counter-"+item.name).text("0"+item.count.toString());
+				else
+					$("#div-counter-"+item.name).text(item.count.toString());
+				
+				let localSub = findLocalItems("submitted-"+item.name);
+				if(localSub && localSub.val){
+					$("#toggle-heart-"+item.name).prop("checked", true).change();
+				}
+			}
 		})
-		.fail(function() {
-
+		.fail(function(err) {
+			console.log(err);
 		});
-		/*
-		$.get(url)
-		.done(function(data) {
-			console.log(data);
-		})
-		.fail(function() {
 
-		});
-		*/
 	}
-	function setCounter(){
+	function setCounter(obj){
+		let nome=obj.id.split('toggle-heart-')[1];
 		$.ajax({
-			url: url,
+			url: url+"/"+nome,
 			type: 'PUT',
-			data: data,
 		})
 		.done(function(data){
-
+			localStorage['submitted-'+nome] = true;
+			getCounter(obj);
 		})
-		.fail(function(){
-
+		.fail(function(err){
+			console.log(err);
 		});
 	}
 	$(function(){
 		$("[id^=toggle-heart]").change(function(){
-			if($(this).prop('checked')){
-				//richiamare setCounter();
+			let nome=this.id.split('toggle-heart-')[1];
+			let localSub = findLocalItems("submitted-"+nome);
+			if($(this).prop('checked') && localSub && !localSub.val){
+				setCounter(this);
 			}
 		});
+		
 		getCounter(null);
 	});
   </script>
@@ -66,39 +74,39 @@
 		<li class="Acciaio"><a href="https://www.instant-gaming.com/user/AcciaioRhinox" target="blank_">
 			<h3>Acciaiorhinox</h3>
 			<p>Er controllore 'nfame</p><i class="fa fa-rainbow"></i></a>
-			<div id="div-heart"><input id="toggle-heart-Acciaiorhinox" type="radio"/><label for="toggle-heart-Acciaiorhinox" aria-label="like">❤</label></div></li>
+			<div id="div-heart"><input id="toggle-heart-Acciaiorhinox" type="radio"/><label for="toggle-heart-Acciaiorhinox" aria-label="like">❤</label><div id="div-counter-Acciaiorhinox">00</div></div></li>
 		<li class="Arme"><a href="https://www.instant-gaming.com/it/user/gamer-33196b" target="blank_">
 			<h3>Armherys</h3>
 			<p>Amica delle guardie</p><i class="fa fa-user-ninja"></i></a>
-			<div id="div-heart"><input id="toggle-heart-Armherys" type="radio"/><label for="toggle-heart-Armherys" aria-label="like">❤</label></div></li>
+			<div id="div-heart"><input id="toggle-heart-Armherys" type="radio"/><label for="toggle-heart-Armherys" aria-label="like">❤</label><div id="div-counter-Armherys">00</div></div></li>
 		<li class="Brina"><a href="https://www.instant-gaming.com/user/BrinaSa" target="blank_">
 			<h3>Brina_Sa</h3>
 			<p>The Judge</p><i class="fa fa-gavel"></i></a>
-			<div id="div-heart"><input id="toggle-heart-Brina_Sa" type="radio"/><label for="toggle-heart-Brina_Sa" aria-label="like">❤</label></div></li>
+			<div id="div-heart"><input id="toggle-heart-Brina_Sa" type="radio"/><label for="toggle-heart-Brina_Sa" aria-label="like">❤</label><div id="div-counter-Brina_Sa">00</div></div></li>
 		<li class="Cane"><a href="https://www.instant-gaming.com/it/user/gamer-5f3e85" target="blank_">
 			<h3>Canepazzojoe</h3>
 			<p>Un nome una garanzia</p><i class="fa fa-dragon"></i></a>
-			<div id="div-heart"><input id="toggle-heart-Canepazzojoe" type="radio"/><label for="toggle-heart-Canepazzojoe" aria-label="like">❤</label></div></li>
+			<div id="div-heart"><input id="toggle-heart-Canepazzojoe" type="radio"/><label for="toggle-heart-Canepazzojoe" aria-label="like">❤</label><div id="div-counter-Canepazzojoe">00</div></div></li>
 		<li class="Exor"><a href="https://www.instant-gaming.com/it/user/Exor" target="blank_">
 			<h3>Exor</h3>
 			<p>Si scrive cos&igrave;??</p><i class="fa fa-user-secret"></i></a>
-			<div id="div-heart"><input id="toggle-heart-Exor" type="radio"/><label for="toggle-heart-Exor" aria-label="like">❤</label></div></li>
+			<div id="div-heart"><input id="toggle-heart-Exor" type="radio"/><label for="toggle-heart-Exor" aria-label="like">❤</label><div id="div-counter-Exor">00</div></div></li>
 		<li class="Gp92"><a href="https://www.instant-gaming.com/it/user/gamer-eb9b56" target="blank_">
 			<h3>Gp_92</h3>
 			<p>Il Cavaliere Oscuro</p><i class="fas fa-crosshairs"></i></a>
-			<div id="div-heart"><input id="toggle-heart-Gp_92" type="radio"/><label for="toggle-heart-Gp_92" aria-label="like">❤</label></div></li>
+			<div id="div-heart"><input id="toggle-heart-Gp_92" type="radio"/><label for="toggle-heart-Gp_92" aria-label="like">❤</label><div id="div-counter-Gp_92">00</div></div></li>
 		<li class="Barba"><a href="https://www.instant-gaming.com/user/IlBarbarossa94" target="blank_">
 			<h3>IlBarbarossa</h3>
 			<p>Barbapap&agrave;</p><i class="fab fa-the-red-yeti"></i></a>
-			<div id="div-heart"><input id="toggle-heart-IlBarbarossa" type="radio"/><label for="toggle-heart-IlBarbarossa" aria-label="like">❤</label></div></li>
+			<div id="div-heart"><input id="toggle-heart-IlBarbarossa" type="radio"/><label for="toggle-heart-IlBarbarossa" aria-label="like">❤</label><div id="div-counter-IlBarbarossa">00</div></div></li>
 		<li class="Wiz"><a href="https://www.instant-gaming.com/user/gamer-8c6a02" target="blank_">
 			<h3>WizardNGod</h3>
 			<p>Snappo DOC</p><i class="fa fa-hat-wizard"></i></a>
-			<div id="div-heart"><input id="toggle-heart-WizardNGod" type="radio"/><label for="toggle-heart-WizardNGod" aria-label="like">❤</label></div></li>
+			<div id="div-heart"><input id="toggle-heart-WizardNGod" type="radio"/><label for="toggle-heart-WizardNGod" aria-label="like">❤</label><div id="div-counter-WizardNGod">00</div></div></li>
 		<li class="Wrldh"><a href="https://www.instant-gaming.com/user/gamer-bc319a" target="blank_">
 			<h3>Wr1dh</h3>
 			<p>Cugino di Hasbulla</p><i class="fab fa-accessible-icon"></i></a>
-			<div id="div-heart"><input id="toggle-heart-Wr1dh" type="radio"/><label for="toggle-heart-Wr1dh" aria-label="like">❤</label></div></li>
+			<div id="div-heart"><input id="toggle-heart-Wr1dh" type="radio"/><label for="toggle-heart-Wr1dh" aria-label="like">❤</label><div id="div-counter-Wr1dh">00</div></div></li>
 	</ul>
 </div>
 <!-- partial -->
