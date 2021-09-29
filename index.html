@@ -40,9 +40,11 @@
 	}
 	function setCounter(obj){
 		let nome=obj.id.split('toggle-heart-')[1];
+		let dataJson = {"name": nome};
 		$.ajax({
-			url: url+"/"+nome,
+			url: url,
 			type: 'PUT',
+			data: dataJson,
 		})
 		.done(function(data){
 			localStorage['submitted-'+nome] = true;
