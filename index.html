@@ -60,7 +60,7 @@
 		$("[id^=toggle-heart]").change(function(){
 			let nome=this.id.split('toggle-heart-')[1];
 			let localSub = findLocalItems("submitted-"+nome);
-			if($(this).prop('checked') && localSub.length>0 ){
+			if($(this).prop('checked') && localSub.length==0 ){
 				setCounter(this);
 			}
 		});
