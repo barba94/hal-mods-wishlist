@@ -21,7 +21,7 @@
 			type: 'GET',
 			dataType: 'json'
 		}).done(function(data) {
-			for(const item of data.items){
+			for(const item of data.Items){
 				if(item.count<10)
 					$("#div-counter-"+item.name).text("0"+item.count.toString());
 				else
