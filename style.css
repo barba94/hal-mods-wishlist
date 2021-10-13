@@ -110,6 +110,31 @@ ul li:first-child {
   border-top: 2px solid #e6e6e6;
 }
 
+/*LOADER*/
+.loader {
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  border: 0.3em solid transparent;
+  border-radius: 50%;
+  border-top: 0.3em solid #3498db;
+  border-bottom: 0.3em solid #3498db;
+  width: 0.5em;
+  height: 0.5em;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
 /*HEART*/
 [id='div-heart'] {
   display: flex;
