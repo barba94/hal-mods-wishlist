@@ -1,15 +1,19 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,900");
 body {
   font-family: "Roboto", sans-serif;
-  background-color: #f2f2f2;
+  background-color: #d6d6d6;
   line-height: 1.2;
 }
 div {
   position: relative;
 }
+a{
+  text-decoration: none;
+  color: inherit;
+}
 
-ul {
-  width: 60vw;
+ul.mods-list {
+  width: 70vw;
   padding: 0;
   margin: 0;
   list-style: none;
@@ -20,35 +24,64 @@ ul {
 }
 
 @media (max-width: 840px) {
-  ul {
+  ul.mods-list {
     width: 80vw;
   }
 }
 
-ul li {
+ul.mods-list > li {
   border-bottom: 2px solid #e6e6e6;
   position: relative;
   overflow: hidden;
   transition: 0.2s ease-in-out;
 }
-ul li a {
+ul.mods-list > li {
   display: block;
   padding: 30px;
   text-decoration: none;
   color: #222;
   transition: 0.2s ease-in-out;
 }
-ul li a h3 {
+ul.mods-list > li > h3 {
   margin: 0 0 15px;
   font-size: 30px;
   font-weight: 900;
 }
-ul li a p {
+ul.mods-list > li > p {
   margin: 0;
   font-size: 20px;
   max-width: calc(100% - 110px);
 }
-ul li a i {
+div.wishlists {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+/*LINK STYLE*/
+ul.link-list {
+  margin: 0;
+  padding: 0;
+  padding-top: 5px;
+  overflow: hidden;
+}
+ul.link-list > li{
+  display: inline;
+  margin: 3px;
+}
+ul.link-list > li > a > svg:hover {
+  transform: translateY(-4px);
+}
+ul.link-list > li > a > svg{
+  height: 50px;
+  width: 50px;
+  transition: .1s ease-in;
+}
+/*END LINK STYLE*/
+
+ul.mods-list > li > i {
   position: absolute;
   top: 50%;
   right: 100px;
@@ -56,13 +89,13 @@ ul li a i {
   font-size: 80px !important;
   opacity: 0.50;
 }
-ul li div {
+ul.mods-list > li > .div-heart {
   position: absolute;
   top: 50%;
   right: 50px;
   transform: translatey(-50%);
 }
-ul li div div {
+.div-heart > div {
   position: relative;
   top: 50%;
   right: 0;
@@ -70,43 +103,52 @@ ul li div div {
   transform: translatey(-50%);
 }
 
-ul li.Acciaio:hover {
+ul.mods-list > li.Acciaio:hover {
   background-color: #ffc107;
 }
-ul li.Arme:hover {
+ul.mods-list > li.Arme:hover {
   background-color: #333;
 }
-ul li.Barba:hover {
+ul.mods-list > li.Barba:hover {
   background-color: #e53935;
 }
-ul li.Brina:hover {
+ul.mods-list > li.Brina:hover {
   background-color: #0039cb;
 }
-ul li.Cane:hover {
+ul.mods-list > li.Cane:hover {
   background-color: #333;
 }
-ul li.Daaave:hover {
+ul.mods-list > li.Daaave:hover {
   background-color: #ec407a;
 }
-ul li.Exor:hover {
+ul.mods-list > li.Exor:hover {
   background-color: #333;
 }
-ul li.Gp92:hover {
+ul.mods-list > li.Gp92:hover {
   background-color: #0039cb;
 }
-ul li.Wiz:hover {
+ul.mods-list > li.Wiz:hover {
   background-color: #9c27b0;
 }
-ul li.Wrldh:hover {
+ul.mods-list > li.Wrldh:hover {
   background-color: #42a5f5;
 }
-ul li:hover {
+ul.mods-list > li:hover {
   box-shadow: 0 10px 15px 0 #e6e6e6;
 }
-ul li:hover > a {
+ul.mods-list > li:hover > h3 {
   color: #fff;
 }
-ul li:first-child {
+ul.mods-list > li:hover > p {
+  color: #fff;
+}
+ul.mods-list > li:hover > sub {
+  color: #fff;
+}
+ul.mods-list > li:hover > i {
+  color: #fff;
+}
+ul.mods-list > li:first-child {
   border-top: 2px solid #e6e6e6;
 }
 
